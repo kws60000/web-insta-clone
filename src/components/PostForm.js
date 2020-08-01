@@ -5,15 +5,12 @@ import "./PostForm.css";
 const PostForm = ({ onClickAddPost }) => {
   let history = useHistory();
 
-  const [image, setImage] = useState(null);
   const [author, setAuthor] = useState("");
   const [place, setPlace] = useState("");
   const [description, setDescription] = useState("");
   const [hashtags, setHashtags] = useState("");
+  const [imgBase64, setImageBase64] = useState("");
 
-  const onChangeImage = (e) => {
-    setImage(e.target.files[0]);
-  };
   const onChagneAuthor = (e) => {
     setAuthor(e.target.value);
   };
@@ -26,17 +23,36 @@ const PostForm = ({ onClickAddPost }) => {
   const onChangeHashtags = (e) => {
     setHashtags(e.target.value);
   };
+  const onChangeFile = (e) => {
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setImageBase64(base64.toString());
+      }
+    };
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
   const goHome = () => {
     history.push("/");
   };
 
   return (
     <div id="Post-Form">
-      <input
-        type="file"
-        accept="image/jpg, image/png, image/jpeg, image/gif"
-        onChange={onChangeImage}
-      />
+      <div className="img_upload">
+        <div className="img_add">
+          <input
+            type="file"
+            name="imgFile"
+            id="ex_file"
+            className="ex_file"
+            onChange={onChangeFile}
+          />
+        </div>
+      </div>
 
       <input
         type="text"
@@ -70,11 +86,11 @@ const PostForm = ({ onClickAddPost }) => {
         onClick={() => {
           onClickAddPost({
             id: Math.random(),
-            image,
             place,
             author,
             description,
             hashtags,
+            imgBase64,
           });
           goHome();
         }}

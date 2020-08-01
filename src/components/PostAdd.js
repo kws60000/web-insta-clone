@@ -18,8 +18,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleAddPost: ({ id, image, author, place, description, hashtags }) =>
-    dispatch(addPost({ id, image, author, place, description, hashtags })),
+  handleAddPost: ({ id, imgBase64, author, place, description, hashtags }) =>
+    dispatch(addPost({ id, imgBase64, author, place, description, hashtags })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostAdd);
