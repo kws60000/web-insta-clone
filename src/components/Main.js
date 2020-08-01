@@ -9,7 +9,7 @@ const Main = ({ postList }) => {
         <Post
           key={post.id}
           id={post.id}
-          image={post.image}
+          imgBase64={post.imgBase64}
           author={post.author}
           place={post.place}
           description={post.description}

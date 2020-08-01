@@ -6,7 +6,7 @@ import like from "../assets/like.svg";
 import comment from "../assets/comment.svg";
 import send from "../assets/send.svg";
 
-const Post = ({ id, image, author, place, description, hashtags }) => {
+const Post = ({ id, imgBase64, author, place, description, hashtags }) => {
   return (
     <div>
       <section id="post-list">
@@ -18,9 +18,7 @@ const Post = ({ id, image, author, place, description, hashtags }) => {
             </div>
             <img src={more} alt={more} />
           </header>
-
-          <img src={`http://localhost:3000/files/${image}`} alt="" />
-
+          <img src={imgBase64} alt={imgBase64} />
           <footer>
             <div className="actions">
               <button type="button">
@@ -33,6 +31,7 @@ const Post = ({ id, image, author, place, description, hashtags }) => {
             <strong>12명이 좋아합니다.</strong>
             <p>
               {description}
+
               <span>{hashtags}</span>
             </p>
           </footer>

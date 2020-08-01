@@ -1,12 +1,20 @@
 export const ADDPOST = "postList/ADDPOST";
 
-export const addPost = ({ id, author, place, description, hashtags }) => ({
+export const addPost = ({
+  id,
+  author,
+  place,
+  description,
+  hashtags,
+  imgBase64,
+}) => ({
   type: ADDPOST,
   id,
   author,
   place,
   description,
   hashtags,
+  imgBase64,
 });
 
 export default function postList(state = [], action) {
@@ -21,6 +29,7 @@ export default function postList(state = [], action) {
           place: action.place,
           description: action.description,
           hashtags: action.hashtags,
+          imgBase64: action.imgBase64,
         },
       ];
     default:

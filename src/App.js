@@ -5,10 +5,12 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes />
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Header />
+        <Routes />
+      </BrowserRouter>
+    </div>
   );
 };
 
